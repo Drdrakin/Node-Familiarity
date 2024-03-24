@@ -2,6 +2,7 @@ import express from 'express';
 
 const routes = express.Router();
 
+<<<<<<< HEAD
 //Método referente ao GET => que significa busca
 routes.get('/', (request,response) => {
     return response.status(200).send('Comunicação Backend e Front concluída')
@@ -21,6 +22,11 @@ routes.post('/',(request,response) => {
     if(senha.lenght < 5){
 
     }
+=======
+routes.get('/', (request,response) => {
+    return response.status(200),
+    send('Comunicação Backend e Front concluída')
+>>>>>>> 1515261d383f709deba51a59f4a197f4cacae3be
 })
 
 export default routes;
