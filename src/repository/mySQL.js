@@ -4,7 +4,7 @@ async function connect(){ //Essa função é declarada com asíncrona para permi
     return await mysql.createConnection({ 
         host: 'localhost',
         port: 3306,
-        password: '',
+        password: 'etecembu@123',
         database: 'cinetec2024',
         user: 'root'
     })
