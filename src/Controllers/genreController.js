@@ -5,15 +5,15 @@ const routes = express.Router();
 
 //Método referente ao cadastro de generos
 routes.post('/', async (request,response) => {  
-    const {genero} = request.body;
+    const {genre} = request.body;
 
-    console.log(">>>>> genero: ", genero)
+    console.log(">>>>> genero: ", genre)
 
-    if(genero.length < 1){
+    if(genre.length < 1){
         return response.status(400).send({message: "O genero não pode ser nulo"})
     }
 
-    await serviceGenre.createGenre(genero)
+    await serviceGenre.createGenre(genre)
     return response.status(201).send({message: "Genero cadastrado com sucesso"});
 })
 
