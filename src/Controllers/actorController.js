@@ -11,12 +11,11 @@ routes.post('/', async (request,response) => {
     console.log(">>>>> Sexo: ", sex);
     console.log(">>>>> Birthdate: ", birthDate);
 
-    if(actorName.length < 1 && sex.length < 1 && birthDate.length < 1){
-        return response.status(400).send({message: "Preencha todos os campos"})
+    if(actorName.length < 1 || sex.length < 1 || birthDate.length < 1){
+        return response.status(400).send({message: "Erro: Preencha todos os campos corretamente"})
     }
-
     await serviceActor.createActor(actorName, sex, birthDate)
-    return response.status(201).send({message: "Dados do diretor cadastrados com sucesso"});
+    return response.status(201).send({message: "Dados do ator cadastrados com sucesso"});
 })
 
 export default routes;

@@ -12,8 +12,8 @@ routes.post('/', async (request,response) => {
     console.log(">>>>> Birthdate: ", birthDate);
     console.log(">>>>> Sex: ", sex);
 
-    if(directorName.length < 1 && nationality.length < 1 && birthDate.length < 1 && sex.lenght < 1){
-        return response.status(400).send({message: "Preencha todos os campos"})
+    if(directorName.length < 1 || nationality.length < 1 || birthDate.length < 1 || sex.lenght < 1){
+        return response.status(400).send({message: "Erro: Preencha todos os campos corretamente"})
     }
 
     await serviceDirector.createDirector(directorName, nationality, birthDate, sex)
