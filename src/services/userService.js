@@ -1,7 +1,7 @@
 import database from '../repository/mySQL.js'
 
 async function createUser(email, name, password, user_type){ //Async pois o await é usado
-    const userInsert = "INSERT INTO tbl_usuario(nome, email, senha, tipo_usuario) VALUES (?,?,?,?)" //é declarado como interrogação pois não sabemos os dados (Ainda virão do front)
+    const userInsert = "INSERT INTO tbl_usuario(email, nome, senha, tipo_usuario) VALUES (?,?,?,?)" //é declarado como interrogação pois não sabemos os dados (Ainda virão do front)
 
     const dataUser = [email, name, password, user_type] //Vetor para guardar os dados
 
@@ -10,4 +10,24 @@ async function createUser(email, name, password, user_type){ //Async pois o awai
     conn.end() //Fecha a conexão
 }
 
-export default {createUser} //Exportado com chaves pois é uma função
+async function listUser(){ 
+    const sqlSelect = "select * from tbl_usuario" //Não precisa de interrogação pois é um select(?)
+
+    const conn = await database.connect(); 
+    const [rows] = await conn.query(sqlSelect); //rows é um nome proprio para trazer esses dados de forma organizada
+    conn.end() //Fecha a conexão
+
+    return rows; //Faz com que o resultado ao chamar a função seja a constante rows
+}
+
+async function updateUser(email, name, password, user_type, id_usuario){
+    const sqlUpdate = "update tbl_usuario set email = ?, nome = ?, senha = ?, tipo_usuario = ? where id_usuario = ?"
+
+    const dataUser = [email, name, password, user_type, id_usuario]
+
+    const conn = await database.connect()
+    await conn.query(sqlUpdate, dataUser)
+    conn.end()
+}
+
+export default {createUser, listUser, updateUser} //Exportado com virgulas pois são vários elementos
