@@ -14,20 +14,23 @@ routes.post('/', async (request,response) => {
     console.log(">>>>> password: ", password)
     console.log(">>>>> user type: ", user_type)
 
-    if(password.length < 5){
-        return response.status(400).send({message: "A senha deve conter mais de 5 catacteres"})
+    if(password.length < 8){
+        return response.status(400).send({message: "A senha deve conter mais de 8 catacteres"})
     }
-
+    if(!email.includes('@')){
+        return response.status(400).send({message: "Email inválido"})
+    }
+    if(name.length < 1){
+        return response.status(400).send({message: "Nome inválido"})
+    }
     await service.createUser(email, name, password, user_type);
 
     return response.status(201).send({message: "Usuário cadastrado com sucesso"});
 })
 
-//Método referente ao GET => que significa busca, jogue-o no navegador
+//Método referente ao GET => que significa busca, é possível joga-lo no navegador também
 routes.get('/', async (request,response) => {
     const bankUsers = await service.listUser();
-
-    console.log(bankUsers)
 
     if (bankUsers.length < 1)
     {
@@ -35,6 +38,17 @@ routes.get('/', async (request,response) => {
     }
     response.status(200).send({message: bankUsers})
 })
+
+routes.get('/deletedUsers', async (request,response) => {
+    const deletedUsers = await service.listDeletedUser();
+
+    if (deletedUsers == null)
+    {
+        response.status(204).send({message:"Nenhum usuario deletado encontrado"})
+    }
+    response.status(200).send({message: deletedUsers})
+})
+
 
 routes.put('/', async (request,response) => {
     const {email, name, password, user_type, user_id} = request.body;
@@ -55,8 +69,28 @@ routes.put('/', async (request,response) => {
         return response.status(400).send({message: "Senha não pode ser nula"})
     }
 
-    await service.updateUser(email, name, password, user_type, user_id)
+    await service.updateUser(email, name, password, user_type, user_id);
     return response.status(201).send({message: "Dados atualizados com sucesso"});
 
 })
+
+routes.delete('/softDelete/:user_id', async (request, response) => {
+    const {user_id} = request.params;
+
+    console.log("Id do Usuário deletado logicamente", user_id)
+
+    await service.softDeleteUser(user_id);
+    return response.status(200).send({message: "Usuário deletado com sucesso"})
+
+})
+
+routes.delete('/:user_id', async (request, response) => {
+    const {user_id} = request.params;
+
+    console.log("Id do Usuário deletado para sempre: ", user_id)
+
+    await service.hardDeleteUser(user_id);
+    return response.status(200).send({message: "Usuário deletado FISICAMENTE com sucesso"})
+})
+
 export default routes;

@@ -10,4 +10,24 @@ async function createGenre(genre){ //Async pois o await é usado, uma vez que é
     conn.end() //Fecha a conexão
 }
 
-export default {createGenre} //Exportado com chaves pois é uma função
+async function listGenre(){
+    const genreSelect = "select * from tbl_genero"
+
+    const conn = await database.connect();
+    const [rows] = await conn.query(genreSelect)
+    conn.end()
+
+    return rows;
+}
+
+async function updateGenre(genre, genreId){
+    const genreUpdate = "update tbl_genero set genero = ? where id_genero = ? "
+
+    const dataGenre = [genre, genreId];
+
+    const conn = await database.connect();
+    await conn.query(genreUpdate, dataGenre)
+    conn.end()
+}
+
+export default {createGenre, listGenre, updateGenre} //Exportado com chaves pois é uma função

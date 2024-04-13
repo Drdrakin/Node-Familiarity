@@ -54,3 +54,9 @@ CREATE TABLE tbl_usuario(
     criado_em datetime default now(),
     deletado boolean default false
 );
+
+select * from tbl_usuario;
+select * from tbl_filme;
+select * from tbl_ator;
+select * from tbl_genero;
+select * from tbl_diretor;
