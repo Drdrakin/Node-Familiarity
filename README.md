@@ -1,2 +1,2 @@
 # Node-Familiarity
-Projeto de Programação Web com fins de aprendizagem
+Projeto de Programação Web com fins didáticos
