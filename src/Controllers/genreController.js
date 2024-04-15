@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { request } from 'express';
 import serviceGenre from '../services/genreService.js'
 
 const routes = express.Router();
@@ -36,6 +36,20 @@ routes.put('/', async (request, response) =>{
     await serviceGenre.updateGenre(genre, genreId)
     return response.status(200).send({message:"Dados atualizados com sucesso"})
 
+})
+
+routes.delete('/:genre_id', async (request, response) =>{
+    const {genre_id} = request.params;
+
+    await serviceGenre.hardDeleteGenre(genre_id);
+    return response.status(200).send({message: "genero deletado FISICAMENTE com sucesso"})
+})
+
+routes.delete('/softdelete/:genre_id', async (request, response) =>{
+    const {genre_id} = request.params;
+
+    await serviceGenre.softDeleteGenre(genre_id);
+    return response.status(200).send({message: "genero deletado logicamente com sucesso"})
 })
 
 export default routes;

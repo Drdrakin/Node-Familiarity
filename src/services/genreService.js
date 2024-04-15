@@ -30,4 +30,20 @@ async function updateGenre(genre, genreId){
     conn.end()
 }
 
-export default {createGenre, listGenre, updateGenre} //Exportado com chaves pois é uma função
+async function hardDeleteGenre(id_genero){
+    const hardDelete = "delete from tbl_genero where id_genero = ?"
+
+    const conn = await database.connect();
+    await conn.query(hardDelete, id_genero);
+    conn.end();
+}
+
+async function softDeleteGenre(id_genero){
+    const softDelete = "update tbl_genero set deletado = true where id_genero = ?"
+
+    const conn = await database.connect()
+    await conn.query(softDelete, id_genero)
+    conn.end()
+}
+
+export default {createGenre, listGenre, updateGenre, hardDeleteGenre, softDeleteGenre} //Exportado com chaves pois é uma função
