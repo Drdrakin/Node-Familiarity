@@ -49,7 +49,6 @@ routes.get('/deletedUsers', async (request,response) => {
     response.status(200).send({message: deletedUsers})
 })
 
-
 routes.put('/', async (request,response) => {
     const {email, name, password, user_type, user_id} = request.body;
 

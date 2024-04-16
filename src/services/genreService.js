@@ -11,7 +11,7 @@ async function createGenre(genre){ //Async pois o await é usado, uma vez que é
 }
 
 async function listGenre(){
-    const genreSelect = "select * from tbl_genero"
+    const genreSelect = "select * from tbl_genero where deletado = false"
 
     const conn = await database.connect();
     const [rows] = await conn.query(genreSelect)
@@ -20,6 +20,15 @@ async function listGenre(){
     return rows;
 }
 
+async function listDeletedGenre(){
+    const genreSelect = "select * from tbl_genero where deletado = true"
+
+    const conn = await database.connect();
+    const [rows] = await conn.query(genreSelect)
+    conn.end()
+    
+    return rows;
+}
 async function updateGenre(genre, genreId){
     const genreUpdate = "update tbl_genero set genero = ? where id_genero = ? "
 
@@ -46,4 +55,4 @@ async function softDeleteGenre(id_genero){
     conn.end()
 }
 
-export default {createGenre, listGenre, updateGenre, hardDeleteGenre, softDeleteGenre} //Exportado com chaves pois é uma função
+export default {createGenre, listGenre, listDeletedGenre, updateGenre, hardDeleteGenre, softDeleteGenre} //Exportado com chaves pois é uma função

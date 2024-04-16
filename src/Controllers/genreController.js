@@ -23,17 +23,26 @@ routes.get('/', async (request, response) => {
     if (genres.length == 0){
         response.status(204).send({message: "Não há generos cadastrados"})
     }
-    console.log(genres)
     response.status(200).send({message: genres})
 })
 
+routes.get('/deletedGenres', async (request, response) => {
+    const deletedGenres = await serviceGenre.listDeletedGenre();
+
+    if (deletedGenres.length == 0){
+        response.status(204).send({message: "Não existe generos deletados na base"})
+    }
+
+    response.status(200).send({message: deletedGenres})
+})
+
 routes.put('/', async (request, response) =>{
-    const {genre, genreId} = request.body;
+    const {genre, genre_id} = request.body;
 
     console.log("Genero:", genre)
-    console.log("Id do Genero:", genreId)
+    console.log("Id do Genero:", genre_id)
 
-    await serviceGenre.updateGenre(genre, genreId)
+    await serviceGenre.updateGenre(genre, genre_id)
     return response.status(200).send({message:"Dados atualizados com sucesso"})
 
 })
