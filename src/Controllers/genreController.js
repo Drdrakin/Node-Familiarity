@@ -21,19 +21,19 @@ routes.get('/', async (request, response) => {
     const genres = await serviceGenre.listGenre();
 
     if (genres.length == 0){
-        response.status(204).send({message: "Não há generos cadastrados"})
+        return response.status(204).send({message: "Não há generos cadastrados"})
     }
-    response.status(200).send({message: genres})
+    return response.status(200).send({message: genres})
 })
 
 routes.get('/deletedGenres', async (request, response) => {
     const deletedGenres = await serviceGenre.listDeletedGenre();
 
     if (deletedGenres.length == 0){
-        response.status(204).send({message: "Não existe generos deletados na base"})
+        return response.status(204).send({message: "Não existe generos deletados na base"})
     }
 
-    response.status(200).send({message: deletedGenres})
+    return response.status(200).send({message: deletedGenres})
 })
 
 routes.put('/', async (request, response) =>{

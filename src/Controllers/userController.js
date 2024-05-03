@@ -34,9 +34,9 @@ routes.get('/', async (request,response) => {
 
     if (bankUsers.length < 1)
     {
-        response.status(204).send({message:"204 Nenhum cadastro encontrado"})
+        return response.status(204).send({message:"204 Nenhum cadastro encontrado"})
     }
-    response.status(200).send({message: bankUsers})
+    return response.status(200).send({message: bankUsers})
 })
 
 routes.get('/deletedUsers', async (request,response) => {
@@ -44,9 +44,9 @@ routes.get('/deletedUsers', async (request,response) => {
 
     if (deletedUsers == null)
     {
-        response.status(204).send({message:"Nenhum usuario deletado encontrado"})
+        return response.status(204).send({message:"Nenhum usuario deletado encontrado"})
     }
-    response.status(200).send({message: deletedUsers})
+    return response.status(200).send({message: deletedUsers})
 })
 
 routes.put('/', async (request,response) => {
@@ -100,9 +100,9 @@ routes.get('/specific/:user_id', async (request, response) => {
 
     if (user.length < 1)
     {
-        response.status(204).send({message:"Nenhum cadastro encontrado"})
+        return response.status(204).send({message:"Nenhum cadastro encontrado"})
     }
-    response.status(200).send({message: user})
+    return response.status(200).send({message: user})
 })
 
 export default routes;

@@ -22,19 +22,19 @@ routes.get('/', async (request, response) => {
     const actors = await serviceActor.listActor();
 
     if (actors.length == 0){
-        response.status(204).send({message: "Não há atores cadastrados"})
+        return response.status(204).send({message: "Não há atores cadastrados"})
     }
-    response.status(200).send({message: actors})
+    return response.status(200).send({message: actors})
 })
 
 routes.get('/deletedActors', async (request, response) => {
     const deletedActors = await serviceActor.listDeletedActor();
 
     if (deletedActors.length == 0){
-        response.status(204).send({message: "Não existe atores deletados na base"})
+        return response.status(204).send({message: "Não existe atores deletados na base"})
     }
 
-    response.status(200).send({message: deletedActors})
+    return response.status(200).send({message: deletedActors})
 })
 
 routes.put('/', async (request, response) =>{
@@ -67,9 +67,9 @@ routes.get('/specific/:id_ator', async (request, response) => {
 
     if (ator.length < 1)
     {
-        response.status(204).send({message:"Nenhum cadastro encontrado"})
+        return response.status(204).send({message:"Nenhum cadastro encontrado"})
     }
-    response.status(200).send({message: ator})
+    return response.status(200).send({message: ator})
 })
 
 export default routes;

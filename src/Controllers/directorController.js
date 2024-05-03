@@ -24,19 +24,19 @@ routes.get('/', async (request, response) => {
     const directors = await serviceDirector.listDirector();
 
     if (directors.length == 0){
-        response.status(204).send({message: "Não há diretores cadastrados"})
+        return response.status(204).send({message: "Não há diretores cadastrados"})
     }
-    response.status(200).send({message: directors})
+    return response.status(200).send({message: directors})
 })
 
 routes.get('/deletedDirectors', async (request, response) => {
     const deletedDirectors = await serviceDirector.listDeletedDirector();
 
     if (deletedDirectors.length == 0){
-        response.status(204).send({message: "Não existe diretores deletados na base"})
+        return response.status(204).send({message: "Não existe diretores deletados na base"})
     }
 
-    response.status(200).send({message: deletedDirectors})
+    return response.status(200).send({message: deletedDirectors})
 })
 
 routes.put('/', async (request, response) =>{
@@ -69,9 +69,9 @@ routes.get('/specific/:id_director', async (request, response) => {
 
     if (diretor.length < 1)
     {
-        response.status(204).send({message:"Nenhum cadastro encontrado"})
+        return response.status(204).send({message:"Nenhum cadastro encontrado"})
     }
-    response.status(200).send({message: diretor})
+    return response.status(200).send({message: diretor})
 })
 
 export default routes;
