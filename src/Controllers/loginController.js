@@ -3,7 +3,7 @@ import service from '../services/loginService.js';
 
 const routes = express.Router();
 
-routes.post('/login', async (request,response) => {  
+routes.post('/', async (request,response) => {  
     const {email, password} = request.body;
 
    
