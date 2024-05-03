@@ -57,4 +57,14 @@ async function hardDeleteUser(userId){
     await conn.query(hardDelete, userId);
     conn.end();
 }
-export default {createUser, listUser, listDeletedUser, updateUser, softDeleteUser, hardDeleteUser} //Exportado com virgulas pois são vários elementos
+
+async function listSpecificUser(userId){
+    const sql = "select * from tbl_usuario where id_usuario = ? and deletado = false" 
+
+    const conn = await database.connect(); 
+    const [rows] = await conn.query(sql, userId); //rows é um nome proprio para trazer esses dados de forma organizada
+    conn.end() //Fecha a conexão
+
+    return rows; 
+}
+export default {createUser, listUser, listDeletedUser, updateUser, softDeleteUser, hardDeleteUser, listSpecificUser} //Exportado com virgulas pois são vários elementos

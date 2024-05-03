@@ -92,4 +92,17 @@ routes.delete('/:user_id', async (request, response) => {
     return response.status(200).send({message: "Usuário deletado FISICAMENTE com sucesso"})
 })
 
+routes.get('/specific/:user_id', async (request, response) => {
+
+    const {user_id} = request.params;
+
+    const user = await service.listSpecificUser(user_id);
+
+    if (user.length < 1)
+    {
+        response.status(204).send({message:"Nenhum cadastro encontrado"})
+    }
+    response.status(200).send({message: user})
+})
+
 export default routes;
