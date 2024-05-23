@@ -14,5 +14,6 @@ routes.use('/actor', actorController);
 routes.use('/director', directorController);
 routes.use('/movie', movieController);
 routes.use('/login', loginController)
+routes.use('/login', loginController)
 
 export default routes;

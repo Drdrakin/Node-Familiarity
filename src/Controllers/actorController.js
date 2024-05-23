@@ -72,4 +72,8 @@ routes.get('/specific/:id_ator', async (request, response) => {
     return response.status(200).send({message: ator})
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 727f72af29939622220635f91647467c02f73001
 export default routes;
