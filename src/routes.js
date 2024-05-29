@@ -5,6 +5,7 @@ import actorController from './Controllers/actorController.js'
 import directorController from './Controllers/directorController.js'
 import movieController from './Controllers/movieController.js'
 import loginController from './Controllers/loginController.js'
+import moviActorController from './Controllers/movieActorController.js'
 
 const routes = express();
 
@@ -14,6 +15,6 @@ routes.use('/actor', actorController);
 routes.use('/director', directorController);
 routes.use('/movie', movieController);
 routes.use('/login', loginController)
-routes.use('/login', loginController)
+routes.use('/movieActor', moviActorController)
 
 export default routes;

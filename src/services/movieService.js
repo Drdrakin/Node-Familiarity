@@ -50,4 +50,14 @@ async function SoftdeleteMovie(movieId){
     return rows;
 }
 
-export default {createMovie, updateMovie, listMovie,listSpecificMovie, SoftdeleteMovie};
+async function validateMovie(movie){
+    const sql = "select * from tbl_filme where nome_filme = ?"
+
+    const conn = await database.connect();
+    const [rows] = await conn.query(sql, movie);
+    conn.end();
+
+    return rows;
+}
+
+export default {createMovie, updateMovie, listMovie,listSpecificMovie, SoftdeleteMovie, validateMovie};

@@ -129,10 +129,6 @@ cookie@0.5.0:
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.5.0.tgz"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 727f72af29939622220635f91647467c02f73001
 debug@^4:
   version "4.3.4"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
@@ -140,11 +136,6 @@ debug@^4:
   dependencies:
     ms "2.1.2"
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
 debug@2.6.9:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
@@ -152,19 +143,6 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-debug@^4:
-  version "4.3.4"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
-  dependencies:
-    ms "2.1.2"
-
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
 define-data-property@^1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.4.tgz"
@@ -288,17 +266,6 @@ fresh@0.5.2:
   resolved "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz"
   integrity sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-fsevents@~2.3.2:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
-
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
@@ -376,10 +343,6 @@ http-errors@2.0.0:
     statuses "2.0.1"
     toidentifier "1.0.1"
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 727f72af29939622220635f91647467c02f73001
 iconv-lite@^0.6.3:
   version "0.6.3"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
@@ -387,11 +350,6 @@ iconv-lite@^0.6.3:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -399,19 +357,6 @@ iconv-lite@0.4.24:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-iconv-lite@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
-  integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
-  dependencies:
-    safer-buffer ">= 2.1.2 < 3.0.0"
-
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
 ignore-by-default@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/ignore-by-default/-/ignore-by-default-1.0.1.tgz"
@@ -560,15 +505,7 @@ negotiator@0.6.3:
 
 nodemon@^3.1.0:
   version "3.1.0"
-<<<<<<< HEAD
   resolved "https://registry.npmjs.org/nodemon/-/nodemon-3.1.0.tgz"
-=======
-<<<<<<< HEAD
-  resolved "https://registry.npmjs.org/nodemon/-/nodemon-3.1.0.tgz"
-=======
-  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-3.1.0.tgz#ff7394f2450eb6a5e96fe4180acd5176b29799c9"
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
   integrity sha512-xqlktYlDMCepBJd43ZQhjWwMw2obW/JRvkrLxq5RCNcuDDX1DbcPT+qT1IlIIdf+DhnWs90JpTMe+Y5KxOchvA==
   dependencies:
     chokidar "^3.5.2"
@@ -797,15 +734,7 @@ undefsafe@^2.0.5:
   resolved "https://registry.npmjs.org/undefsafe/-/undefsafe-2.0.5.tgz"
   integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
 
-<<<<<<< HEAD
 unpipe@~1.0.0, unpipe@1.0.0:
-=======
-<<<<<<< HEAD
-unpipe@~1.0.0, unpipe@1.0.0:
-=======
-unpipe@1.0.0, unpipe@~1.0.0:
->>>>>>> f70022339cd68efdf496e64ce8a69db508162f73
->>>>>>> 727f72af29939622220635f91647467c02f73001
   version "1.0.0"
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz"
   integrity sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==

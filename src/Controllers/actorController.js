@@ -7,10 +7,6 @@ const routes = express.Router();
 routes.post('/', async (request,response) => {  
     const {actorName, sex, birthDate} = request.body;
 
-    console.log(">>>>> Ator: ", actorName);
-    console.log(">>>>> Sexo: ", sex);
-    console.log(">>>>> Birthdate: ", birthDate);
-
     if(actorName.length < 1 || sex.length < 1 || birthDate.length < 1){
         return response.status(400).send({message: "Erro: Preencha todos os campos corretamente"})
     }
@@ -72,8 +68,4 @@ routes.get('/specific/:id_ator', async (request, response) => {
     return response.status(200).send({message: ator})
 })
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 727f72af29939622220635f91647467c02f73001
 export default routes;

@@ -64,4 +64,15 @@ async function listSpecificActor(id_ator){
 
     return rows; 
 }
-export default {createActor, updateActor, listActor, listDeletedActor, softDeleteActor, hardDeleteActor, listSpecificActor} 
+
+async function validateActor(actor){
+    const sql = "select * from tbl_ator where nome_ator = ?"
+
+    const conn = await database.connect();
+    const [rows] = await conn.query(sql, actor);
+    conn.end();
+
+    return rows;
+}
+
+export default {createActor, updateActor, listActor, listDeletedActor, softDeleteActor, hardDeleteActor, listSpecificActor, validateActor} 

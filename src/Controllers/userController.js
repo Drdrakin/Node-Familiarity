@@ -9,14 +9,6 @@ const routes = express.Router();
 routes.post('/', async (request,response) => {  
     const {email, name, password, user_type} = request.body;
 
-<<<<<<< HEAD
-=======
-    console.log(">>>>> email: ", email)
-    console.log(">>>>> name: ", name)
-    console.log(">>>>> password: ", password)
-    console.log(">>>>> user type: ", user_type)
-
->>>>>>> 727f72af29939622220635f91647467c02f73001
     if(password.length < 8){
         return response.status(400).send({message: "A senha deve conter mais de 8 catacteres"})
     }
@@ -79,11 +71,6 @@ routes.put('/', async (request,response) => {
 routes.delete('/softDelete/:user_id', async (request, response) => {
     const {user_id} = request.params;
 
-<<<<<<< HEAD
-=======
-    console.log("Id do Usuário deletado logicamente", user_id)
-
->>>>>>> 727f72af29939622220635f91647467c02f73001
     await service.softDeleteUser(user_id);
     return response.status(200).send({message: "Usuário deletado com sucesso"})
 

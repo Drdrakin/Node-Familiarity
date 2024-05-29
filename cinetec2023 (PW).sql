@@ -60,3 +60,60 @@ select * from tbl_filme;
 select * from tbl_ator;
 select * from tbl_genero;
 select * from tbl_diretor;
+select * from tbl_filme_ator;
+
+#Select ruim
+select * from tbl_filme_ator where FK_id_ator = ?;
+
+#Join,
+#tbl_filme, tbl_ator, tbl_diretor, tbl_filme_ator
+select 
+	A.nome_ator, F.nome_filme
+from 
+	tbl_filme_ator FA
+inner join 
+	tbl_ator A
+on 
+	FA.FK_id_ator = A.id_ator
+inner join
+	tbl_filme F
+on 
+	F.id_filme = FA.FK_id_filme
+inner join
+	tbl_diretor D
+on 
+	D.id_diretor = F.FK_id_diretor
+where FA.FK_id_ator = 3
+;
+	
+	
+
+	
+
+	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

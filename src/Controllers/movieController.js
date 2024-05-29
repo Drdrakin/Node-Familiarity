@@ -12,15 +12,11 @@ routes.post('/', async (request,response) => {
     const genderData = await genreService.validateGenre(genre);
     const directorData = await directorService.validateDirector(director);
 
-<<<<<<< HEAD
     //O nome desta constante se refere ao campo do banco de dados que está no array na posição [0] do array rows que a função chama
-=======
->>>>>>> 727f72af29939622220635f91647467c02f73001
     const {id_genero} = genderData[0]; 
     const {id_diretor} = directorData[0];
 
     await movieService.createMovie(movieName, airingYear, duration, id_genero, id_diretor)
-<<<<<<< HEAD
     return response.status(201).send({message: "Dados do filme cadastrados com sucesso"});
 })
 
@@ -77,9 +73,5 @@ routes.put('/', async (request, response) => {
 
     return response .status(200).send({message: "Atualização dos dados realizada corretamente"})
 })
-=======
-    return response.status(201).send({message: "Dados do diretor cadastrados com sucesso"});
-})
 
->>>>>>> 727f72af29939622220635f91647467c02f73001
 export default routes;
