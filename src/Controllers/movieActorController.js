@@ -6,75 +6,95 @@ import actorService from "../services/actorService.js";
 const routes = express.Router();
 
 routes.post('/', async (request,response) => {  
-    const {actorName, movieName} = request.body;
+    try{
+        const {actorName, movieName} = request.body;
 
-    if(actorName.length < 1 || movieName.length < 1){
-        return response.status(400).send({message: "Indique o ator e filme"})
+        if(actorName.length < 1 || movieName.length < 1){
+            return response.status(400).send({message: "Indique o ator e filme"})
+        }
+
+        const movieData = await movieService.validateMovie(movieName);
+        const actordata = await actorService.validateActor(actorName)
+
+        const {id_filme} = movieData[0];
+        const {id_ator} = actordata[0];
+        
+        console.log(movieData);
+        console.log(actordata);
+
+        await movieActorService.createMovieActor(id_ator, id_filme);
+
+        return response.status(201).send({message: "Dados cadastrados com sucesso"});
+    } catch{
+        return response.status(500).send({message: "Erro interno"})
     }
-
-    const movieData = await movieService.validateMovie(movieName);
-    const actordata = await actorService.validateActor(actorName)
-
-    const {id_filme} = movieData[0];
-    const {id_ator} = actordata[0];
-    
-    console.log(movieData);
-    console.log(actordata);
-
-    await movieActorService.createMovieActor(id_ator, id_filme);
-
-    return response.status(201).send({message: "Dados cadastrados com sucesso"});
 })
 
 routes.put('/', async (request,response) => {  
-    const {currentActor, currentMovie, newActor, newMovie} = request.body;
+    try{
+        const {currentActor, currentMovie, newActor, newMovie} = request.body;
 
-    const movieOld = await movieService.validateMovie(currentMovie);
-    const actorOld = await actorService.validateActor(currentActor)
-    const movieNew = await movieService.validateMovie(newMovie);
-    const actorNew = await actorService.validateActor(newActor);
+        const movieOld = await movieService.validateMovie(currentMovie);
+        const actorOld = await actorService.validateActor(currentActor)
+        const movieNew = await movieService.validateMovie(newMovie);
+        const actorNew = await actorService.validateActor(newActor);
 
-    const id_old_filme = movieOld[0].id_filme;
-    const id_new_ator = actorNew[0].id_ator;
-    const id_old_ator = actorOld[0].id_ator;
-    const id_new_filme = movieNew[0].id_filme;
+        const id_old_filme = movieOld[0].id_filme;
+        const id_new_ator = actorNew[0].id_ator;
+        const id_old_ator = actorOld[0].id_ator;
+        const id_new_filme = movieNew[0].id_filme;
 
-    await movieActorService.updateMovieActor(id_new_ator, id_new_filme, id_old_filme, id_old_ator);
+        await movieActorService.updateMovieActor(id_new_ator, id_new_filme, id_old_filme, id_old_ator);
 
-    return response.status(200).send({message: "Dados atualizados com sucesso"});
+        return response.status(200).send({message: "Dados atualizados com sucesso"});
+    } catch{
+        return response.status(500).send({message: "Erro interno"})
+    }
 })
 
 routes.get('/byActor/:actor', async (request, response) => {
-    const {actor} = request.params;
+    try{
+        const {actor} = request.params;
 
-    const movies = await movieActorService.listByActor(actor);
-    if (movies.lenght < 1 ){
-        return response.status(204).send({message: "Esse ator não participou em nenhum dos filmes da CineEtec"})
+        const movies = await movieActorService.listByActor(actor);
+        if (movies.lenght < 1 ){
+            return response.status(204).send({message: "Esse ator não participou em nenhum dos filmes da CineEtec"})
+        }
+
+        return response.status(200).send({message: movies})
+    } catch {
+        return response.status(500).send({message: "Erro interno"})
     }
-
-    return response.status(200).send({message: movies})
 })
 
 routes.get('/byMovie/:movie', async (request, response) => {
-    const {movie} = request.params;
+    try{
+        const {movie} = request.params;
 
-    const actors = await movieActorService.listByMovie(movie);
-    if (actors.lenght < 1){
-        return response.status(204).send({message: "Esse filme não possui atores cadastrados"})
+        const actors = await movieActorService.listByMovie(movie);
+        if (actors.lenght < 1){
+            return response.status(204).send({message: "Esse filme não possui atores cadastrados"})
+        }
+
+        return response.status(200).send({message: actors})
+    } catch {
+        return response.status(500).send({message: "Erro interno"})
     }
-
-    return response.status(200).send({message: actors})
 })
 
-routes.delete('/', async (request, response) => {
-    const {actorId, movieId} = request.body;
+routes.delete('/:actorId/:movieId', async (request, response) => {
+    try{
+        const {actorId, movieId} = request.params;
 
-    if (actorId < 1 || movieId < 1){
-        return response.status(400).send({message: "Insira corretamente os dados"})
+        if (actorId < 1 || movieId < 1){
+            return response.status(400).send({message: "Insira corretamente os dados"})
+        }
+
+        await movieActorService.deleteActorMovie(actorId, movieId);
+        return response.status(200).send({message: "Deletado com sucesso"})
+    } catch {
+        return response.status(500).send({message: "Erro interno"})
     }
-
-    await movieActorService.deleteActorMovie(actorId, movieId);
-    return response.status(200).send({message: "Deletado com sucesso"})
 })
 
 export default routes;
