@@ -13,14 +13,14 @@ routes.post('/', async (request,response) => {
         const genderData = await genreService.validateGenre(genre);
         const directorData = await directorService.validateDirector(director);
 
-        //O nome desta constante se refere ao campo do banco de dados que está no array na posição [0] do array rows que a função chama
+        //O nome desta constante se refere ao campo do banco de dados que está no array na posição  [0] do array rows que a função chama
         const {id_genero} = genderData[0]; 
         const {id_diretor} = directorData[0];
 
         await movieService.createMovie(movieName, airingYear, duration, id_genero, id_diretor)
         return response.status(201).send({message: "Dados do filme cadastrados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -35,8 +35,8 @@ routes.get('/:movieId', async (request, response) => {
         }
 
         return response.status(200).send({message: movies})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -49,8 +49,8 @@ routes.get('/', async (request, response) => {
         }
 
         return response.status(200).send({message: movies})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -60,8 +60,8 @@ routes.delete('/:movieId', async (request, response) =>{
 
         await movieService.SoftdeleteMovie(movieId);
         return response.status(204).send({message: "Filme deletado com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -83,8 +83,8 @@ routes.put('/', async (request, response) => {
         await movieService.updateMovie(movieName, airingYear, duration, id_genero, id_diretor, movieId);
 
         return response .status(200).send({message: "Atualização dos dados realizada corretamente"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno"}, err)
     }
 })
 

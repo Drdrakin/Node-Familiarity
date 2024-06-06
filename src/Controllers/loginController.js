@@ -21,8 +21,8 @@ routes.post('/', async (request,response) => {
         else{
             return response.status(400).send({message: "Senha ou email inválidos"})
         }
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

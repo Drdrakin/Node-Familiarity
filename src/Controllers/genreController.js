@@ -55,8 +55,8 @@ routes.put('/', async (request, response) =>{
 
         await serviceGenre.updateGenre(genre, genre_id)
         return response.status(200).send({message:"Dados atualizados com sucesso"})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -66,8 +66,8 @@ routes.delete('/:genre_id', async (request, response) =>{
 
         await serviceGenre.hardDeleteGenre(genre_id);
         return response.status(200).send({message: "genero deletado FISICAMENTE com sucesso"})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -77,8 +77,8 @@ routes.delete('/softdelete/:genre_id', async (request, response) =>{
 
         await serviceGenre.softDeleteGenre(genre_id);
         return response.status(200).send({message: "genero deletado logicamente com sucesso"})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
