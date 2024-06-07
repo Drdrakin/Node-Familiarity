@@ -22,8 +22,8 @@ routes.post('/', async (request,response) => {
         
         await service.createUser(email, name, password, user_type);
         return response.status(201).send({message: "Usuário cadastrado com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -37,8 +37,8 @@ routes.get('/', async (request,response) => {
             return response.status(204).send({message:"204 Nenhum cadastro encontrado"})
         }
         return response.status(200).send({message: bankUsers})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -51,8 +51,8 @@ routes.get('/deletedUsers', async (request,response) => {
             return response.status(204).send({message:"Nenhum usuario deletado encontrado"})
         }
         return response.status(200).send({message: deletedUsers})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -72,8 +72,8 @@ routes.put('/', async (request,response) => {
 
         await service.updateUser(email, name, password, user_type, user_id);
         return response.status(201).send({message: "Dados atualizados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -83,8 +83,8 @@ routes.delete('/softDelete/:user_id', async (request, response) => {
 
         await service.softDeleteUser(user_id);
         return response.status(200).send({message: "Usuário deletado com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -96,8 +96,8 @@ routes.delete('/:user_id', async (request, response) => {
 
         await service.hardDeleteUser(user_id);
         return response.status(200).send({message: "Usuário deletado FISICAMENTE com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -112,8 +112,8 @@ routes.get('/specific/:user_id', async (request, response) => {
             return response.status(204).send({message:"Nenhum cadastro encontrado"})
         }
         return response.status(200).send({message: user})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

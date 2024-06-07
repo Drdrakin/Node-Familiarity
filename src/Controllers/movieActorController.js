@@ -25,8 +25,8 @@ routes.post('/', async (request,response) => {
         await movieActorService.createMovieActor(id_ator, id_filme);
 
         return response.status(201).send({message: "Dados cadastrados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -47,8 +47,8 @@ routes.put('/', async (request,response) => {
         await movieActorService.updateMovieActor(id_new_ator, id_new_filme, id_old_filme, id_old_ator);
 
         return response.status(200).send({message: "Dados atualizados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -62,8 +62,8 @@ routes.get('/byActor/:actor', async (request, response) => {
         }
 
         return response.status(200).send({message: movies})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -77,8 +77,8 @@ routes.get('/byMovie/:movie', async (request, response) => {
         }
 
         return response.status(200).send({message: actors})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -92,8 +92,8 @@ routes.delete('/:actorId/:movieId', async (request, response) => {
 
         await movieActorService.deleteActorMovie(actorId, movieId);
         return response.status(200).send({message: "Deletado com sucesso"})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

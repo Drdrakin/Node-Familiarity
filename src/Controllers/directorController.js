@@ -13,8 +13,8 @@ routes.post('/', async (request,response) => {
 
         await serviceDirector.createDirector(directorName, nationality, birthDate, sex)
         return response.status(201).send({message: "Dados do diretor cadastrados com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -26,8 +26,8 @@ routes.get('/', async (request, response) => {
             return response.status(204).send({message: "Não há diretores cadastrados"})
         }
         return response.status(200).send({message: directors})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -39,8 +39,8 @@ routes.get('/deletedDirectors', async (request, response) => {
         }
 
         return response.status(200).send({message: deletedDirectors})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -49,8 +49,8 @@ routes.put('/', async (request, response) =>{
         const {directorName, nationality, birthDate, sex, id_director} = request.body;
         await serviceDirector.updateDirector(directorName, nationality, birthDate, sex, id_director)
         return response.status(200).send({message:"Dados atualizados com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -60,8 +60,8 @@ routes.delete('/:id_director', async (request, response) =>{
     
         await serviceDirector.hardDeleteDirector(id_director);
         return response.status(200).send({message: "Diretor deletado FISICAMENTE com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -70,8 +70,8 @@ routes.delete('/softdelete/:id_director', async (request, response) =>{
         const {id_director} = request.params;
         await serviceDirector.softDeleteDirector(id_director);
         return response.status(200).send({message: "Diretor deletado logicamente com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -87,8 +87,8 @@ routes.get('/specific/:id_director', async (request, response) => {
             return response.status(204).send({message:"Nenhum cadastro encontrado"})
         }
         return response.status(200).send({message: diretor})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

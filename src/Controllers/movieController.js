@@ -19,8 +19,8 @@ routes.post('/', async (request,response) => {
 
         await movieService.createMovie(movieName, airingYear, duration, id_genero, id_diretor)
         return response.status(201).send({message: "Dados do filme cadastrados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -35,8 +35,8 @@ routes.get('/:movieId', async (request, response) => {
         }
 
         return response.status(200).send({message: movies})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -49,8 +49,8 @@ routes.get('/', async (request, response) => {
         }
 
         return response.status(200).send({message: movies})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -60,8 +60,8 @@ routes.delete('/:movieId', async (request, response) =>{
 
         await movieService.SoftdeleteMovie(movieId);
         return response.status(204).send({message: "Filme deletado com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

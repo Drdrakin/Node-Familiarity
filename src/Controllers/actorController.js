@@ -13,8 +13,8 @@ routes.post('/', async (request,response) => {
         }
         await serviceActor.createActor(actorName, sex, birthDate)
         return response.status(201).send({message: "Dados do ator cadastrados com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -25,8 +25,8 @@ routes.get('/', async (request, response) => {
             return response.status(204).send({message: "Não há atores cadastrados"})
         }
         return response.status(200).send({message: actors})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -39,8 +39,8 @@ routes.get('/deletedActors', async (request, response) => {
         }
 
         return response.status(200).send({message: deletedActors})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -54,8 +54,8 @@ routes.put('/', async (request, response) =>{
 
         await serviceActor.updateActor(actorName, sex, birthDate)
         return response.status(200).send({message:"Dados atualizados com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch(err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -68,8 +68,8 @@ routes.delete('/:id_actors', async (request, response) =>{
         }
         await serviceActor.hardDeleteActor(id_actors);
         return response.status(200).send({message: "Ator deletado FISICAMENTE com sucesso"})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -80,8 +80,8 @@ routes.delete('/softdelete/:id_actors', async (request, response) =>{
         await serviceActor.softDeleteActor(id_actor);
         return response.status(200).send({message: "Ator deletado logicamente com sucesso"})
 
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -97,8 +97,8 @@ routes.get('/specific/:id_ator', async (request, response) => {
             return response.status(204).send({message:"Nenhum cadastro encontrado"})
         }
         return response.status(200).send({message: ator})
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

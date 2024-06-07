@@ -13,8 +13,8 @@ routes.post('/', async (request,response) => {
 
         await serviceGenre.createGenre(genre)
         return response.status(201).send({message: "Genero cadastrado com sucesso"});
-    } catch{
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -26,8 +26,8 @@ routes.get('/', async (request, response) => {
         return response.status(204).send({message: "Não há generos cadastrados"})
     }
     return response.status(200).send({message: genres})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
     
 })
@@ -41,8 +41,8 @@ routes.get('/deletedGenres', async (request, response) => {
         }
 
         return response.status(200).send({message: deletedGenres})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 
@@ -55,8 +55,8 @@ routes.put('/', async (request, response) =>{
 
         await serviceGenre.updateGenre(genre, genre_id)
         return response.status(200).send({message:"Dados atualizados com sucesso"})
-    } catch {
-        return response.status(500).send({message: "Erro interno"})
+    } catch (err){
+        return response.status(500).send({message: "Erro interno", err})
     }
 })
 

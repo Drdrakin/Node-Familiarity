@@ -1,7 +1,7 @@
 import database from '../repository/mySQL.js'
 
 async function passwordUser(email){
-    const sql = "select senha from tbl_usuario where email = ?"
+    const sql = "select * from tbl_usuario where email = ?"
 
     const conn = await database.connect();
     const [rows] = await conn.query(sql, email);
@@ -10,4 +10,14 @@ async function passwordUser(email){
     return rows;
 }
 
-export default {passwordUser}
+async function dataUser(email){
+    const sql = "select id_usuario, nome, email, tipo_usuario from tbl_usuario where email = ?"
+
+    const conn = await database.connect();
+    const [rows] = await conn.query(sql, email);
+    conn.end();
+
+    return rows;
+}
+
+export default {passwordUser, dataUser}
